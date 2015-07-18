@@ -33,4 +33,22 @@ public class VotarRestauranteSemanalSteps {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
+    @Given("^Yo ya he votado a un restaurante contador de votos a (\\d+)$")
+    public void yo_ya_he_votado_a_un_restaurante_contador_de_votos_a(int arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^Yo voto una segunda vez al mismo restaurante$")
+    public void yo_voto_una_segunda_vez_al_mismo_restaurante() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^El restaurante no incrementa el contador de votos$")
+    public void el_restaurante_no_incrementa_el_contador_de_votos() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
