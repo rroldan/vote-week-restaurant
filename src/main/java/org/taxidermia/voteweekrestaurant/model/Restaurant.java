@@ -1,4 +1,4 @@
-package org.taxidermia.voteweekrestaurant.entities;
+package org.taxidermia.voteweekrestaurant.model;
 
 /**
  * Entidad Restaurante
@@ -30,9 +30,6 @@ public class Restaurant {
     {
         private String nestedName;
 
-        public Builder(final String newName){
-            this.nestedName = newName;
-        }
 
 
         public Builder name(final String newName){

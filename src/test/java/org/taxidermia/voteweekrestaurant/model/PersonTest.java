@@ -1,4 +1,4 @@
-package org.taxidermia.voteweekrestaurant.entities;
+package org.taxidermia.voteweekrestaurant.model;
 
 
 import org.junit.Test;
@@ -11,8 +11,8 @@ public class PersonTest {
     @Test
     public void testNewPersonSetNickName() {
     String nickname = "nickName";
-    Person person = new Person.Builder(nickname).build();
-    assertEquals(nickname,person.getNickName());
+    Person person = new Person.Builder().nickName(nickname).build();
+    assertEquals(nickname, person.getNickName());
 
 }
 
@@ -21,7 +21,7 @@ public class PersonTest {
     public void testNewPersonToString() {
         String personToString = "Person: NickName: nickName";
         String nickname = "nickName";
-        Person person = new Person.Builder(nickname).build();
+        Person person = new Person.Builder().nickName(nickname).build();
         assertEquals(personToString, person.toString());
 
     }

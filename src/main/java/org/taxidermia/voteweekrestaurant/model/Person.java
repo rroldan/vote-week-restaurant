@@ -1,4 +1,4 @@
-package org.taxidermia.voteweekrestaurant.entities;
+package org.taxidermia.voteweekrestaurant.model;
 
 /**
  * Entidad Usuario
@@ -35,12 +35,7 @@ public class Person {
     {
         private String  nestedNickName;
 
-        public Builder(
-                final String newNickName)
-        {
-            this.nestedNickName = newNickName;
 
-        }
 
         public Builder nickName(final String newNickName)
         {
