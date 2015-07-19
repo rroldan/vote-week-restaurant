@@ -6,9 +6,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-/**
- *
- */
 public class PersonTest {
 
     @Test
@@ -18,11 +15,14 @@ public class PersonTest {
     assertEquals(nickname,person.getNickName());
 
 }
+
+
     @Test
-    public void testNewPersonNotNull() {
+    public void testNewPersonToString() {
+        String personToString = "Person: NickName: nickName";
         String nickname = "nickName";
         Person person = new Person.Builder(nickname).build();
-        assertNotNull(person);
+        assertEquals(personToString, person.toString());
 
     }
 

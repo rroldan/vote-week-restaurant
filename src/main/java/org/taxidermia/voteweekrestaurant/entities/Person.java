@@ -22,6 +22,11 @@ public class Person {
         return this.nickName;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Person: " + "NickName: " + this.nickName;
+    }
 
     /**
      * Clase Builder
