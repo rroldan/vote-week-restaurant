@@ -5,12 +5,18 @@ package org.taxidermia.voteweekrestaurant.model;
  */
 public class Vote {
 
+    private final String id;
     private final Person person;
     private final Restaurant restaurant;
 
-    public Vote(final Person newPerson, final Restaurant newRestaurant){
+    public Vote(final String newId, final Person newPerson, final Restaurant newRestaurant){
+        this.id = newId;
         this.person = newPerson;
         this.restaurant = newRestaurant;
+    }
+
+    public String getId(){
+        return this.id;
     }
 
     public Person getPerson(){
@@ -24,8 +30,9 @@ public class Vote {
     @Override
     public String toString()
     {
-        return "Voto: " + this.person.toString() + " , "
-                        + this.restaurant.toString();
+        return "Vote[" + "id=" + this.id + ", "
+                        + this.person.toString() + ", "
+                        + this.restaurant.toString() + "]";
     }
 
     /**
@@ -33,10 +40,15 @@ public class Vote {
      */
     public static class Builder
     {
+        private String nestedId;
         private Person nestedPerson;
         private Restaurant nestedRestaurant;
 
 
+    public Builder id(final String newId){
+        this.nestedId = newId;
+        return this;
+    }
 
     public Builder person(final Person newPerson){
         this.nestedPerson = newPerson;
@@ -49,7 +61,7 @@ public class Vote {
     }
 
     public Vote build() {
-        return new Vote(nestedPerson,nestedRestaurant);
+        return new Vote(nestedId,nestedPerson,nestedRestaurant);
     }
 
     }

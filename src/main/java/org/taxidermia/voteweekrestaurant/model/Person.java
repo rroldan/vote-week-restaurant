@@ -25,7 +25,7 @@ public class Person {
     @Override
     public String toString()
     {
-        return "Person: " + "NickName: " + this.nickName;
+        return "Person[nickName=" + this.nickName +"]";
     }
 
     /**

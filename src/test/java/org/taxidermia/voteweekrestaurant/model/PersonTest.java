@@ -19,7 +19,7 @@ public class PersonTest {
 
     @Test
     public void testNewPersonToString() {
-        String personToString = "Person: NickName: nickName";
+        String personToString = "Person[nickName=nickName]";
         String nickname = "nickName";
         Person person = new Person.Builder().nickName(nickname).build();
         assertEquals(personToString, person.toString());

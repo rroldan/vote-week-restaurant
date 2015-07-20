@@ -19,7 +19,7 @@ public class RestaurantTest {
 
     @Test
     public void testNewRestaurantToString() {
-        String restaurantToString = "Restaurant: Name: name";
+        String restaurantToString = "Restaurant[name=name]";
         String name = "name";
         Restaurant restaurant = new Restaurant.Builder().name(name).build();
         assertEquals(restaurantToString, restaurant.toString());

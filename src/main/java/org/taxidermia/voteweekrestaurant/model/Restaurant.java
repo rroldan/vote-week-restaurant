@@ -20,7 +20,7 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Restaurant: Name: " + this.name;
+        return "Restaurant[name=" + this.name + "]";
     }
 
     /**
