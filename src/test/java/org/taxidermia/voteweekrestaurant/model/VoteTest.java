@@ -10,7 +10,7 @@ public class VoteTest {
     @Test
     public void testNewVoteSetPersonAndRestaurant() {
 
-        String id = "1";
+        long id = 1;
         String nickname = "nickName";
         String name = "name";
 
@@ -26,7 +26,7 @@ public class VoteTest {
     @Test
     public void testNewVoteToString() {
         String voteToString = "Vote[id=1, Person[nickName=nickName], Restaurant[name=name]]";
-        String id = "1";
+        long id = 1;
         String nickname = "nickName";
         String name = "name";
 

@@ -6,10 +6,10 @@ import java.util.Collection;
  * Interfaz Repositorio de Votos
  */
 public interface VoteRepository {
-    public String nextIdentity();
+    public long nextIdentity();
     public Collection<Vote> allVotesOfRestaurant(Restaurant Restaurant);
     public Vote voteOfPerson(Person person);
-    public Vote voteOfId(String id);
+    public Vote voteOfId(long id);
     public void remove(Vote vote);
     public void removeAll(Collection<Vote> voteCollection);
     public void save(Vote vote);
