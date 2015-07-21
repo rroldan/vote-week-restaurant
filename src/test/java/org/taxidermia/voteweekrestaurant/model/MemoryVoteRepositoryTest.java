@@ -3,8 +3,7 @@ package org.taxidermia.voteweekrestaurant.model;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class MemoryVoteRepositoryTest {
 
@@ -21,6 +20,25 @@ public class MemoryVoteRepositoryTest {
        assertEquals(voteFixture.getRestaurant().getName(), voteFixture.getRestaurant().getName());
 
    }
+
+    @Test
+   public void testVoteRepositoryNextIdentity() {
+       long id=0;
+       VoteRepository voteRepository = initVoteRepository();
+       long idNextIdentity = voteRepository.nextIdentity();
+       assertNotEquals(id,voteRepository.nextIdentity());
+       assertNotEquals(idNextIdentity,voteRepository.nextIdentity());
+   }
+
+    @Test
+    public void testVoteRepositoryRemove(){
+        Vote voteFixture = getVoteFixture();
+        VoteRepository voteRepository = initVoteRepository();
+        voteRepository.save(voteFixture);
+        voteRepository.remove(voteFixture);
+        Vote vote = voteRepository.voteOfId(voteFixture.getId());
+        assertNull(vote);
+    }
 
 
     private Vote getVoteFixture(){

@@ -3,6 +3,7 @@ package org.taxidermia.voteweekrestaurant.model;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Implementación Repositorio de Votos
@@ -17,7 +18,8 @@ public class MemoryVoteRepository implements VoteRepository {
 
     @Override
     public long nextIdentity() {
-        return java.util.UUID.randomUUID().timestamp();
+        UUID uid = UUID.randomUUID();
+        return  Math.abs(uid.getLeastSignificantBits());
     }
 
     @Override
@@ -38,7 +40,7 @@ public class MemoryVoteRepository implements VoteRepository {
 
     @Override
     public void remove(Vote vote) {
-
+        this.store.remove(vote.getId());
     }
 
     @Override
