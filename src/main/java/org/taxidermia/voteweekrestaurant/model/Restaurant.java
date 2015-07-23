@@ -4,13 +4,18 @@ package org.taxidermia.voteweekrestaurant.model;
  * Entidad Restaurante
  */
 public class Restaurant {
+    /**
+     * Identificador
+     */
+    private final long id;
 
     /**
      * Nombre
      */
     private final String name;
 
-    public Restaurant (final String newName){
+    public Restaurant (final long newId,final String newName){
+        this.id = newId;
         this.name = newName;
     }
 
@@ -18,9 +23,11 @@ public class Restaurant {
         return this.name;
     }
 
+    public long getId() {return this.id; }
+
     @Override
     public String toString() {
-        return "Restaurant[name=" + this.name + "]";
+        return "Restaurant[id=" + getId() + ", " + "name=" + getName() + "]";
     }
 
     /**
@@ -28,9 +35,14 @@ public class Restaurant {
     */
     public static class Builder
     {
+        private long nestedId;
         private String nestedName;
 
 
+        public Builder id(final long newId){
+            this.nestedId = newId;
+            return this;
+        }
 
         public Builder name(final String newName){
             this.nestedName = newName;
@@ -38,7 +50,7 @@ public class Restaurant {
         }
 
         public Restaurant build() {
-            return new Restaurant(nestedName);
+            return new Restaurant(nestedId,nestedName);
         }
     }
     

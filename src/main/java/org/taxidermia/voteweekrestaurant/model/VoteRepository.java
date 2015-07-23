@@ -13,5 +13,5 @@ public interface VoteRepository {
     public void remove(Vote vote);
     public void removeAll(Collection<Vote> voteCollection);
     public void save(Vote vote);
-    public void saveAll(Collection<Vote> voteCollection);
+
 }

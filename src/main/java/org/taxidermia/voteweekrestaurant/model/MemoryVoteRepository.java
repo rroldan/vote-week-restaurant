@@ -45,6 +45,9 @@ public class MemoryVoteRepository implements VoteRepository {
 
     @Override
     public void removeAll(Collection<Vote> voteCollection) {
+        for (Vote vote : voteCollection) {
+            this.remove(vote);
+        }
 
     }
 
@@ -53,8 +56,5 @@ public class MemoryVoteRepository implements VoteRepository {
         this.store.put(vote.getId(), vote);
     }
 
-    @Override
-    public void saveAll(Collection<Vote> voteCollection) {
 
-    }
 }

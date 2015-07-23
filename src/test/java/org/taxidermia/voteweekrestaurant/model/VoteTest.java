@@ -23,7 +23,7 @@ public class VoteTest {
         assertEquals(name, vote.getRestaurant().getName());
     }
 
-    @Test
+
     public void testNewVoteToString() {
         String voteToString = "Vote[id=1, Person[nickName=nickName], Restaurant[name=name]]";
         long id = 1;

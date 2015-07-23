@@ -10,8 +10,11 @@ public class RestaurantTest {
 
     @Test
     public void testNewRestaurantSetName() {
+        long id = 1l;
         String name = "name";
-        Restaurant restaurant = new Restaurant.Builder().name(name).build();
+        Restaurant restaurant = new Restaurant.Builder().id(id).name(name).build();
+
+        assertEquals(id, restaurant.getId());
         assertEquals(name,restaurant.getName());
 
     }
@@ -19,9 +22,11 @@ public class RestaurantTest {
 
     @Test
     public void testNewRestaurantToString() {
-        String restaurantToString = "Restaurant[name=name]";
+        String restaurantToString = "Restaurant[id=1, name=name]";
+        long id = 1l;
         String name = "name";
-        Restaurant restaurant = new Restaurant.Builder().name(name).build();
+        Restaurant restaurant = new Restaurant.Builder().id(id).name(name).build();
+
         assertEquals(restaurantToString, restaurant.toString());
 
     }
