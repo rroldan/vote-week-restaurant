@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 public class PersonTest {
 
     @Test
-    public void testNewPersonSetNickName() {
+    public void testNewPersonBuild() {
     long id = 1l;
     String nickname = "nickName";
     Person person = new Person.Builder().id(id).nickName(nickname).build();

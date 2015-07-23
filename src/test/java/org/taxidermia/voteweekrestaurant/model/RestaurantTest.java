@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 public class RestaurantTest {
 
     @Test
-    public void testNewRestaurantSetName() {
+    public void testNewRestaurantBuild() {
         long id = 1l;
         String name = "name";
         Restaurant restaurant = new Restaurant.Builder().id(id).name(name).build();
