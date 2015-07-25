@@ -12,6 +12,6 @@ public interface PersonRepository {
     public Person personOfId(long id);
     public void remove(Person person);
     public void removeAll(Collection<Person> personCollection);
-    public void save(Person vote);
+    public void save(Person person);
 
 }
