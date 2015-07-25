@@ -30,4 +30,9 @@ public class RestaurantTest {
         assertEquals(restaurantToString, restaurant.toString());
 
     }
+
+    public static Restaurant getRestauranFixture(long id, String name){
+        Restaurant restaurant = new Restaurant.Builder().id(id).name(name).build();
+        return restaurant;
+    }
 }

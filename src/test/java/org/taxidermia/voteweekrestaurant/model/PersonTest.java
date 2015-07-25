@@ -25,10 +25,16 @@ public class PersonTest {
     public void testNewPersonToString() {
         String personToString = "Person[id=1, nickName=nickName]";
         long id = 1;
-        String nickname = "nickName";
-        Person person = new Person.Builder().id(id).nickName(nickname).build();
+        String nickName = "nickName";
+        Person person = new Person.Builder().id(id).nickName(nickName).build();
         assertEquals(personToString, person.toString());
 
+    }
+
+
+    public static Person getPersonFixture(long id, String nickName){
+        Person person = new Person.Builder().id(id).nickName(nickName).build();
+        return person;
     }
 
 }

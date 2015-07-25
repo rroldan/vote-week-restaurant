@@ -6,12 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MemoryVoteRepositoryTest {
+    Person person = PersonTest.getPersonFixture(1l, "nickname");
+    Restaurant restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+
 
    @Test
    public void testVoteRepositorySaveAndFindOneCorrect(){
-       Vote voteFixture = getVoteFixture();
        VoteRepository voteRepository = initVoteRepository();
-       voteRepository.save(getVoteFixture());
+       Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
+       voteRepository.save(voteFixture);
        Vote vote = voteRepository.voteOfId(voteFixture.getId());
 
        assertNotNull(vote);
@@ -32,8 +35,9 @@ public class MemoryVoteRepositoryTest {
 
     @Test
     public void testVoteRepositoryRemove(){
-        Vote voteFixture = getVoteFixture();
         VoteRepository voteRepository = initVoteRepository();
+        Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
+
         voteRepository.save(voteFixture);
         voteRepository.remove(voteFixture);
         Vote vote = voteRepository.voteOfId(voteFixture.getId());
@@ -41,10 +45,9 @@ public class MemoryVoteRepositoryTest {
     }
 
 
-    private Vote getVoteFixture(){
-        Person person = new Person.Builder().nickName("nickname").build();
-        Restaurant restaurant = new Restaurant.Builder().name("name").build();
-        Vote   vote = new Vote.Builder().id(1l).person(person).restaurant(restaurant).build();
+    public static Vote getVoteFixture(long id, Person person, Restaurant restaurant){
+
+        Vote   vote = new Vote.Builder().id(id).person(person).restaurant(restaurant).build();
         return vote;
     }
 
