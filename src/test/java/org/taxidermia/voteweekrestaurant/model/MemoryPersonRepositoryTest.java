@@ -27,7 +27,7 @@ public class MemoryPersonRepositoryTest {
     }
 
     @Test
-    public void testVoteRepositoryNextIdentity() {
+    public void testPersonRepositoryNextIdentity() {
         long id=0;
         PersonRepository personRepository = initPersonRepository();
         long idNextIdentity = personRepository.nextIdentity();

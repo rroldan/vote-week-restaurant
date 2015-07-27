@@ -10,25 +10,25 @@ import cucumber.api.java.en.When;
  */
 public class VotarRestauranteSemanalSteps {
 
+    VotarRestauranteSemanal votarRestauranteSemanal = new VotarRestauranteSemanal();
+
     @Given("^Yo soy una persona con nombre \"(.*?)\" que puede votar$")
-    public void yo_soy_una_persona_con_nombre_que_puede_votar(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void yo_soy_una_persona_con_nombre_que_puede_votar(String name) throws Throwable {
+        votarRestauranteSemanal.addPerson(name);
     }
 
-    @Given("^Hay un restaurante en la lista llamado \"(.*?)\" con el contador de votos a (\\d+)$")
-    public void hay_un_restaurante_en_la_lista_llamado_con_el_contador_de_votos_a(String arg1, int arg2) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Given("^Hay un restaurante en la lista llamado \"(.*?)\" $")
+    public void hay_un_restaurante_en_la_lista(String arg1) throws Throwable {
+
     }
 
-    @When("^Yo voto a un restaurante$")
+    @When("^Yo voto al restaurante$")
     public void yo_voto_a_un_restaurante() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
-    @Then("^El restaurante al que he votado incrementa en uno su contador de votos$")
+    @Then("^El restaurante al que he votado tiene un voto asociado$")
     public void el_restaurante_al_que_he_votado_incrementa_en_uno_su_contador_de_votos() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();

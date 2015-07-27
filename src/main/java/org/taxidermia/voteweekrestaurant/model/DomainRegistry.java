@@ -5,8 +5,9 @@ package org.taxidermia.voteweekrestaurant.model;
  */
 public class DomainRegistry {
 
-    VoteRepository voteRepository;
-    PersonRepository personRepository;
+    private VoteRepository voteRepository;
+    private PersonRepository personRepository;
+    private RestaurantRepository restaurantRepository;
 
 
 
@@ -14,6 +15,7 @@ public class DomainRegistry {
 
         this.personRepository = new MemoryPersonRepository();
         this.voteRepository = new MemoryVoteRepository();
+        this.restaurantRepository = new MemoryRestaurantRepository();
 
     }
 
@@ -21,9 +23,12 @@ public class DomainRegistry {
         return this.voteRepository;
     }
 
-
     public PersonRepository personRepository() {
-        return this.personRepository();
+        return this.personRepository;
+    }
+
+    public RestaurantRepository restaurantRepository() {
+        return this.restaurantRepository;
     }
 
 }

@@ -8,11 +8,12 @@ import static org.junit.Assert.assertEquals;
 
 public class PersonServiceTest {
 
+    
     PersonRepository personRepository = initPersonRepository();
     PersonService personService = new  PersonService(personRepository);
 
     @Test
-    public void personOkTest(){
+    public void addPersonToListOkTest(){
 
         long personId = personRepository.nextIdentity();
         Person personFixture =  PersonTest.getPersonFixture(personId, "nickName");
