@@ -33,6 +33,28 @@ public class Person {
         return this.nickName;
     }
 
+
+
+    @Override
+    public boolean equals(Object anObject) {
+        boolean equalObjects = false;
+        if (anObject != null && this.getClass() == anObject.getClass()) {
+           if (anObject.hashCode() == this.hashCode()) {
+               equalObjects = true;
+           }
+        }
+        return equalObjects;
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCodeValue =
+                + (2335 * 3)
+                        + String.valueOf(getId()).hashCode();
+
+        return hashCodeValue;
+    }
+
     @Override
     public String toString()
     {

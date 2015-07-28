@@ -28,6 +28,26 @@ public class Vote {
     }
 
     @Override
+    public boolean equals(Object anObject) {
+        boolean equalObjects = false;
+        if (anObject != null && this.getClass() == anObject.getClass()) {
+            if (anObject.hashCode() == this.hashCode()) {
+                equalObjects = true;
+            }
+        }
+        return equalObjects;
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCodeValue =
+                + (1456 * 4)
+                        + String.valueOf(getId()).hashCode();
+
+        return hashCodeValue;
+    }
+
+    @Override
     public String toString()
     {
         return "Vote[" + "id=" + getId() + ", "

@@ -18,20 +18,18 @@ public class VotarRestauranteSemanalSteps {
     }
 
     @Given("^Hay un restaurante en la lista llamado \"(.*?)\" $")
-    public void hay_un_restaurante_en_la_lista(String arg1) throws Throwable {
-
+    public void hay_un_restaurante_en_la_lista(String name) throws Throwable {
+        votarRestauranteSemanal.addRestaurant(name);
     }
 
     @When("^Yo voto al restaurante$")
     public void yo_voto_a_un_restaurante() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        votarRestauranteSemanal.vote();
     }
 
     @Then("^El restaurante al que he votado tiene un voto asociado$")
     public void el_restaurante_al_que_he_votado_incrementa_en_uno_su_contador_de_votos() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 
     @Given("^Yo soy una persona que puede votar$")

@@ -3,8 +3,7 @@ package org.taxidermia.voteweekrestaurant.model;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class PersonTest {
 
@@ -30,6 +29,27 @@ public class PersonTest {
         assertEquals(personToString, person.toString());
 
     }
+
+    @Test
+    public void testPersonHash() {
+        long id = 1;
+        String nickName = "nickName";
+        Person person = getPersonFixture(1,"nickName");
+        Person person2 = getPersonFixture(1, "nickName");
+        assertEquals(person.hashCode(), person2.hashCode());
+
+    }
+
+    @Test
+    public void testPersonEquals() {
+        long id = 1;
+        String nickName = "nickName";
+        Person person = getPersonFixture(1, "nickName");
+        Person person2 = getPersonFixture(1,"nickName");
+        assertTrue(person.equals(person2));
+
+    }
+
 
 
     public static Person getPersonFixture(long id, String nickName){

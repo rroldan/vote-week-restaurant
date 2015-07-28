@@ -4,6 +4,7 @@ package org.taxidermia.voteweekrestaurant.model;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class VoteTest {
 
@@ -43,6 +44,30 @@ public class VoteTest {
         assertEquals(voteToString, vote.toString());
 
     }
+
+    @Test
+    public void testVotetHash() {
+
+
+        Vote vote = getVoteFixture(1l, PersonTest.getPersonFixture(1, "nickName"), RestaurantTest.getRestauranFixture(1,"name"));
+        Vote vote2 = getVoteFixture(1l, PersonTest.getPersonFixture(1, "nickName"), RestaurantTest.getRestauranFixture(1, "name"));
+        assertEquals(vote.hashCode(), vote2.hashCode());
+
+    }
+
+    @Test
+    public void testRestaurantEquals() {
+        Vote vote = getVoteFixture(1l, PersonTest.getPersonFixture(1, "nickName"), RestaurantTest.getRestauranFixture(1, "name"));
+        Vote vote2 = getVoteFixture(1l, PersonTest.getPersonFixture(1, "nickName"), RestaurantTest.getRestauranFixture(1, "name"));
+        assertTrue(vote.equals(vote2));
+
+    }
+
+    public static Vote getVoteFixture(long id, Person person, Restaurant restaurant){
+        Vote   vote = new Vote.Builder().id(id).person(person).restaurant(restaurant).build();
+        return vote;
+    }
+
 
 
 }
