@@ -7,20 +7,28 @@ import org.taxidermia.voteweekrestaurant.model.*;
 import static org.junit.Assert.assertEquals;
 
 public class VoteServiceTest {
-
-    VoteRepository voteRepository = initVoteRepository();
+    DomainRegistry domainRegitry = new DomainRegistry();
+    VoteRepository voteRepository = domainRegitry.voteRepository();
     VoteService voteService = new  VoteService(voteRepository);
 
     @Test
-    public void voteOkTest(){
+    public void testVoteOkTest(){
 
         long voteId = voteRepository.nextIdentity();
-        Vote voteFixture =  getVoteFixture(voteId);
+        Vote voteFixture =getVoteFixture(voteId);
 
         voteService.vote(voteFixture);
         Vote vote = voteRepository.voteOfId(voteId);
-
         assertEquals(voteId, vote.getId());
+
+
+
+    }
+
+    @Test
+    public void testVotesRestaurant() {
+
+
 
     }
 
@@ -33,10 +41,7 @@ public class VoteServiceTest {
             return vote;
         }
 
-        private VoteRepository initVoteRepository(){
-            VoteRepository voteRepository = new MemoryVoteRepository();
-            return voteRepository;
-        }
+
 
 
 

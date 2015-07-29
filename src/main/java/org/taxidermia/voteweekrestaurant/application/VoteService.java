@@ -1,8 +1,11 @@
 package org.taxidermia.voteweekrestaurant.application;
 
 import org.apache.log4j.Logger;
+import org.taxidermia.voteweekrestaurant.model.Restaurant;
 import org.taxidermia.voteweekrestaurant.model.Vote;
 import org.taxidermia.voteweekrestaurant.model.VoteRepository;
+
+import java.util.List;
 
 
 /**
@@ -23,8 +26,18 @@ public class VoteService {
      * @param vote Voto realizado
      */
     public void vote(Vote vote){
-        logger.info("vote()" + vote.toString() );
+        logger.debug("vote()" + vote.toString());
         voteRepository.save(vote);
+
+    }
+
+    /**
+     * Método que obtiene los votos realizados a un restaurante
+     *
+     */
+    public List<Vote> votes(Restaurant restaurant){
+        logger.debug("votes()" + restaurant.toString());
+        return (List<Vote>) voteRepository.allVotesOfRestaurant(restaurant);
 
     }
 

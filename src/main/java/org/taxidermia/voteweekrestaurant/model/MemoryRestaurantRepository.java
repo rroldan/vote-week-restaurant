@@ -40,10 +40,8 @@ public class MemoryRestaurantRepository implements RestaurantRepository {
     }
 
 
-    public void removeAll(Collection<Restaurant> restaurantCollection) {
-        for (Restaurant restaurant : restaurantCollection) {
-            this.remove(restaurant);
-        }
+    public void removeAll() {
+        store.clear();
 
     }
 

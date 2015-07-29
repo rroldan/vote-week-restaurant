@@ -1,9 +1,6 @@
 package org.taxidermia.voteweekrestaurant.model;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Implementación Repositorio de Votos
@@ -23,8 +20,16 @@ public class MemoryVoteRepository implements VoteRepository {
     }
 
 
-    public Collection<Vote> allVotesOfRestaurant(Restaurant Restaurant) {
-        return null;
+    public Collection<Vote> allVotesOfRestaurant(Restaurant restaurant) {
+        Collection<Vote> voteCollection = new ArrayList();
+        for (Vote vote : store.values()) {
+            Restaurant restaurantStore = vote.getRestaurant();
+            if (restaurantStore.equals(restaurant)){
+                voteCollection.add(vote);
+            }
+        }
+
+        return voteCollection;
     }
 
 

@@ -11,10 +11,10 @@ import static org.junit.Assert.assertNotNull;
 
 public class MemeoryRestaurantRepositoryTest {
 
-    DomainRegistry domainRegistry = new DomainRegistry();
 
     @Test
     public void testRestaurantRepositorySaveAndFindOneCorrect(){
+        DomainRegistry domainRegistry = new DomainRegistry();
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
         Restaurant restauranFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
 
@@ -29,6 +29,7 @@ public class MemeoryRestaurantRepositoryTest {
 
     @Test
     public void testRestaurantRepositoryNextIdentity() {
+        DomainRegistry domainRegistry = new DomainRegistry();
         long id=0;
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
         long idNextIdentity = restaurantRepository.nextIdentity();
@@ -38,6 +39,7 @@ public class MemeoryRestaurantRepositoryTest {
 
     @Test
     public void testRestaurantRepositoryRemove(){
+        DomainRegistry domainRegistry = new DomainRegistry();
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
         Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
 
@@ -49,7 +51,7 @@ public class MemeoryRestaurantRepositoryTest {
 
     @Test
     public  void testRestaurantRepositoryAllRestaurant(){
-
+        DomainRegistry domainRegistry = new DomainRegistry();
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
         Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
         restaurantRepository.save(restaurantFixture);
@@ -62,6 +64,30 @@ public class MemeoryRestaurantRepositoryTest {
         assertEquals(restaurantFixture.getName(), restaurant.getName());
 
     }
+
+    @Test
+    public void testRestaurantRepositoryRemoveAll(){
+        DomainRegistry domainRegistry = new DomainRegistry();
+
+        RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
+
+        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        restaurantRepository.save(restaurantFixture);
+
+        Restaurant restaurantFixture2 = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        restaurantRepository.save(restaurantFixture2);
+
+        Collection<Restaurant> restaurantList = restaurantRepository.allRestaurant();
+        assertEquals(2, restaurantList.size());
+
+        restaurantRepository.removeAll();
+
+        Collection<Restaurant> restaurantListRemove = restaurantRepository.allRestaurant();
+        assertEquals(0, restaurantListRemove.size());
+
+    }
+
+
 
 
 

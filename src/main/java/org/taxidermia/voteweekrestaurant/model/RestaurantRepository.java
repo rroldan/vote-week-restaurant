@@ -11,6 +11,6 @@ public interface RestaurantRepository {
     public Collection<Restaurant> allRestaurant();
     public Restaurant restaurantOfId(long id);
     public void remove(Restaurant restaurant);
-    public void removeAll(Collection<Restaurant> restaurantCollection);
+    public void removeAll();
     public void save(Restaurant restaurant);
 }

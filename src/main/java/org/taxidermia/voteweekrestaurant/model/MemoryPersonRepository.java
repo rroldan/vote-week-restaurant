@@ -39,10 +39,8 @@ public class MemoryPersonRepository implements PersonRepository {
     }
 
 
-    public void removeAll(Collection<Person> personCollection) {
-        for (Person person : personCollection) {
-            this.remove(person);
-        }
+    public void removeAll() {
+        store.clear();
 
     }
 

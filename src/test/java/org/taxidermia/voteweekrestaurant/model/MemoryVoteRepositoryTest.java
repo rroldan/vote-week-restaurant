@@ -3,16 +3,19 @@ package org.taxidermia.voteweekrestaurant.model;
 
 import org.junit.Test;
 
+import java.util.Collection;
+
 import static org.junit.Assert.*;
 
 public class MemoryVoteRepositoryTest {
     Person person = PersonTest.getPersonFixture(1l, "nickname");
     Restaurant restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+    DomainRegistry domainRegitry = new DomainRegistry();
 
 
-   @Test
+    @Test
    public void testVoteRepositorySaveAndFindOneCorrect(){
-       VoteRepository voteRepository = initVoteRepository();
+       VoteRepository voteRepository = domainRegitry.voteRepository() ;
        Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
        voteRepository.save(voteFixture);
        Vote vote = voteRepository.voteOfId(voteFixture.getId());
@@ -27,15 +30,15 @@ public class MemoryVoteRepositoryTest {
     @Test
    public void testVoteRepositoryNextIdentity() {
        long id=0;
-       VoteRepository voteRepository = initVoteRepository();
+        VoteRepository voteRepository = domainRegitry.voteRepository() ;
        long idNextIdentity = voteRepository.nextIdentity();
-       assertNotEquals(id,voteRepository.nextIdentity());
-       assertNotEquals(idNextIdentity,voteRepository.nextIdentity());
+       assertNotEquals(id, voteRepository.nextIdentity());
+       assertNotEquals(idNextIdentity, voteRepository.nextIdentity());
    }
 
     @Test
     public void testVoteRepositoryRemove(){
-        VoteRepository voteRepository = initVoteRepository();
+        VoteRepository voteRepository = domainRegitry.voteRepository() ;
         Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
 
         voteRepository.save(voteFixture);
@@ -44,6 +47,20 @@ public class MemoryVoteRepositoryTest {
         assertNull(vote);
     }
 
+    @Test
+    public void testRepositoryAllVotesOfRestaurant(){
+        VoteRepository voteRepository = domainRegitry.voteRepository() ;
+        Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
+        voteRepository.save(voteFixture);
+        Collection<Vote> voteCollection = voteRepository.allVotesOfRestaurant(restaurant);
+        Vote vote = voteCollection.iterator().next();
+        assertEquals(voteFixture.getId(),vote.getId());
+
+
+    }
+
+
+
 
     public static Vote getVoteFixture(long id, Person person, Restaurant restaurant){
 
@@ -51,8 +68,5 @@ public class MemoryVoteRepositoryTest {
         return vote;
     }
 
-    private VoteRepository initVoteRepository(){
-        VoteRepository voteRepository = new MemoryVoteRepository();
-        return voteRepository;
-    }
+
 }

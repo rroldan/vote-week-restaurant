@@ -62,6 +62,26 @@ public class MemoryPersonRepositoryTest {
 
     }
 
+    @Test
+    public void testPersonRepositoryRemoveAll(){
+        PersonRepository personRepository = initPersonRepository();
+
+        Person personFixture = PersonTest.getPersonFixture(personRepository.nextIdentity(), "nickname");
+        personRepository.save(personFixture);
+
+        Person personFixture2 = PersonTest.getPersonFixture(personRepository.nextIdentity(), "nickname");
+        personRepository.save(personFixture2);
+
+        Collection<Person> personList = personRepository.allPerson();
+        assertEquals(2, personList.size());
+
+        personRepository.removeAll();
+
+        Collection<Person> personListRemove = personRepository.allPerson();
+        assertEquals(0, personListRemove.size());
+
+    }
+
 
 
 
