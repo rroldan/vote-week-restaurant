@@ -8,9 +8,10 @@ import java.util.Collection;
 import static org.junit.Assert.*;
 
 public class MemoryVoteRepositoryTest {
-    Person person = PersonTest.getPersonFixture(1l, "nickname");
-    Restaurant restaurant = RestaurantTest.getRestauranFixture(1l, "name");
     DomainRegistry domainRegitry = new DomainRegistry();
+    Person person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
+    Restaurant restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+
 
 
     @Test
@@ -49,13 +50,43 @@ public class MemoryVoteRepositoryTest {
 
     @Test
     public void testRepositoryAllVotesOfRestaurant(){
-        VoteRepository voteRepository = domainRegitry.voteRepository() ;
+        VoteRepository voteRepository = domainRegitry.voteRepository();
         Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
         voteRepository.save(voteFixture);
         Collection<Vote> voteCollection = voteRepository.allVotesOfRestaurant(restaurant);
         Vote vote = voteCollection.iterator().next();
-        assertEquals(voteFixture.getId(),vote.getId());
+        assertEquals(voteFixture.getId(), vote.getId());
 
+
+    }
+
+    @Test
+    public void testVoteRepositoryAllVotes() {
+        VoteRepository voteRepository = domainRegitry.voteRepository();
+        Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
+        voteRepository.save(voteFixture);
+        Collection<Vote> voteCollection = voteRepository.allVotes();
+        Vote vote = voteCollection.iterator().next();
+        assertEquals(voteFixture.getId(), vote.getId());
+
+    }
+
+    @Test
+    public void testPersonRepositoryRemoveAll(){
+        DomainRegistry domainRegitry = new DomainRegistry();
+        VoteRepository voteRepository = domainRegitry.voteRepository();
+
+        Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
+        voteRepository.save(voteFixture);
+
+        Vote voteFixture2 = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
+        voteRepository.save(voteFixture2);
+
+
+        voteRepository.removeAll();
+
+        Collection<Vote> voteListRemove = voteRepository.allVotes();
+        assertEquals(0, voteListRemove.size());
 
     }
 

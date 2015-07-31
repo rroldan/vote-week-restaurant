@@ -49,17 +49,23 @@ public class MemoryVoteRepository implements VoteRepository {
     }
 
 
-    public void removeAll(Collection<Vote> voteCollection) {
-        for (Vote vote : voteCollection) {
-            this.remove(vote);
-        }
-
+    public void removeAll() {
+        store.clear();
     }
 
 
     public void save(Vote vote) {
         this.store.put(vote.getId(), vote);
     }
+
+    public Collection<Vote> allVotes() {
+        Collection<Vote> voteCollection = new ArrayList();
+        for (Vote vote : store.values()) {
+            voteCollection.add(vote);
+        }
+        return voteCollection;
+    }
+
 
 
 }

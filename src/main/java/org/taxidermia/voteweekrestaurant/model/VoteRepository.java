@@ -11,7 +11,8 @@ public interface VoteRepository {
     public Vote voteOfPerson(Person person);
     public Vote voteOfId(long id);
     public void remove(Vote vote);
-    public void removeAll(Collection<Vote> voteCollection);
+    public void removeAll();
     public void save(Vote vote);
+    public Collection<Vote>  allVotes();
 
 }
