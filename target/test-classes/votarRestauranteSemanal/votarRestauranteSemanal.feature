@@ -14,7 +14,8 @@ Feature: Un grupo de personas quiere ir a comer una vez a la semana a un restaur
 
   Scenario: No es posible que un usuario vote dos veces a un mismo restaurante
 
-    Given Yo soy una persona que puede votar
-    And   Yo ya he votado a un restaurante con su contador de votos a 1
+    Given Yo soy una persona con nombre "Pepe" que puede votar
+    And   Hay un restaurante en la lista llamado "La Casona"
+    And   Yo voto al restaurante
     When  Yo voto una segunda vez al mismo restaurante
     Then  El sistema informa que no se puede votar dos veces

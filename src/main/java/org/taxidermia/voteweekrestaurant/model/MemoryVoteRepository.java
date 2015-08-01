@@ -1,11 +1,15 @@
 package org.taxidermia.voteweekrestaurant.model;
 
+import org.apache.log4j.Logger;
+
 import java.util.*;
+
 
 /**
  * Implementación Repositorio de Votos
  */
 public class MemoryVoteRepository implements VoteRepository {
+    static Logger logger = Logger.getLogger(MemoryVoteRepository.class);
 
     private Map<Long,Vote> store;
 
@@ -55,6 +59,7 @@ public class MemoryVoteRepository implements VoteRepository {
 
 
     public void save(Vote vote) {
+        assertionUniqueVotePerson(vote);
         this.store.put(vote.getId(), vote);
     }
 
@@ -66,6 +71,19 @@ public class MemoryVoteRepository implements VoteRepository {
         return voteCollection;
     }
 
+
+
+    private void assertionUniqueVotePerson(Vote newVote){
+        for (Vote vote : store.values()) {
+            if(vote.getPerson().equals(newVote.getPerson())){
+                IllegalStateException  illegalStateException = new IllegalStateException("assertionUniqueVotePerson");
+                logger.debug(illegalStateException  + " " + newVote.getPerson());
+                throw illegalStateException;
+            }
+        }
+
+
+    }
 
 
 }

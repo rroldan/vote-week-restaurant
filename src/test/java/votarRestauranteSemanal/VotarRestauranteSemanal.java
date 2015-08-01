@@ -8,13 +8,17 @@ import org.taxidermia.voteweekrestaurant.model.Person;
 import org.taxidermia.voteweekrestaurant.model.Restaurant;
 import org.taxidermia.voteweekrestaurant.model.Vote;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 public class VotarRestauranteSemanal {
 
-    DomainRegistry domainRegitry = new DomainRegistry();
+    DomainRegistry domainRegitry;
 
-    PersonService personService = new PersonService(domainRegitry.personRepository());
-    RestaurantService restaurantService = new RestaurantService(domainRegitry.restaurantRepository());
-    VoteService voteService = new VoteService(domainRegitry.voteRepository());
+    PersonService personService;
+    RestaurantService restaurantService;
+    VoteService voteService;
 
     Person person;
     Restaurant restaurant;
@@ -40,7 +44,20 @@ public class VotarRestauranteSemanal {
 
 
     public void verifyVote(){
+        List<Vote> votes = voteService.votes(restaurant);
+        Restaurant restaurantVote;
+        Vote vote = votes.iterator().next();
+        restaurantVote = vote.getRestaurant();
+        assertEquals(restaurant.getId(), restaurantVote.getId());
 
+    }
+
+    public void init(){
+         domainRegitry = new DomainRegistry();
+
+         personService = new PersonService(domainRegitry.personRepository());
+        restaurantService = new RestaurantService(domainRegitry.restaurantRepository());
+       voteService = new VoteService(domainRegitry.voteRepository());
     }
 
 
