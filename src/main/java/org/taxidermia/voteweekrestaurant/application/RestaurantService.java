@@ -20,7 +20,7 @@ public class RestaurantService {
     }
 
     public void addRestaurantToList(Restaurant restaurant){
-        logger.info("addRestaurantToList()" + restaurant.toString());
+        logger.debug("addRestaurantToList()" + restaurant.toString());
         this.restaurantRepository.save(restaurant);
     }
 

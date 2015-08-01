@@ -19,7 +19,7 @@ public class PersonService {
 
 
     public void addPersonToList(Person person){
-        logger.info("addPersonToList()" + person.toString() );
+        logger.debug("addPersonToList()" + person.toString() );
         this.personRepository.save(person);
 
     }

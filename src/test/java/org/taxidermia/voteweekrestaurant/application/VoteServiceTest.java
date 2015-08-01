@@ -25,6 +25,19 @@ public class VoteServiceTest {
 
     }
 
+    @Test(expected=java.lang.IllegalStateException.class)
+    public void testVoteEqualPersonExceptionTest(){
+
+        long voteId = voteRepository.nextIdentity();
+        Vote voteFixture =getVoteFixture(voteId);
+        Vote voteFixture2 = getVoteFixture(voteRepository.nextIdentity());
+
+        voteService.vote(voteFixture);
+        voteService.vote(voteFixture2);
+
+
+    }
+
     @Test
     public void testVotesRestaurant() {
 
@@ -35,8 +48,8 @@ public class VoteServiceTest {
 
 
     private Vote getVoteFixture(long voteId){
-            Person person = new Person.Builder().nickName("nickname").build();
-            Restaurant restaurant = new Restaurant.Builder().name("name").build();
+            Person person = new Person.Builder().id(1l).nickName("nickname").build();
+            Restaurant restaurant = new Restaurant.Builder().id(1l).name("name").build();
             Vote   vote = new Vote.Builder().id(voteId).person(person).restaurant(restaurant).build();
             return vote;
         }

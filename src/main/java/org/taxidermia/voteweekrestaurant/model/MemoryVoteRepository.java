@@ -77,7 +77,7 @@ public class MemoryVoteRepository implements VoteRepository {
         for (Vote vote : store.values()) {
             if(vote.getPerson().equals(newVote.getPerson())){
                 IllegalStateException  illegalStateException = new IllegalStateException("assertionUniqueVotePerson");
-                logger.debug(illegalStateException  + " " + newVote.getPerson());
+                logger.debug(illegalStateException  + " " + newVote.toString());
                 throw illegalStateException;
             }
         }

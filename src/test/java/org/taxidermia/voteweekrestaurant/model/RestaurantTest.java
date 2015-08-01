@@ -32,6 +32,17 @@ public class RestaurantTest {
 
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void testPersonNickameNullException() {
+        Restaurant restaurant = getRestauranFixture(1, null);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testPersonIdOutOfRangeException() {
+        Restaurant restaurant = getRestauranFixture(0, "nickname");
+    }
+
+
     @Test
     public void testRestaurantHash() {
         long id = 1;

@@ -3,13 +3,16 @@ package org.taxidermia.voteweekrestaurant.model;
 /**
  * Voto de una persona a un restaurante
  */
-public class Vote {
+public class Vote extends Entity {
 
     private final long id;
     private final Person person;
     private final Restaurant restaurant;
 
     public Vote(final long newId, final Person newPerson, final Restaurant newRestaurant){
+        this.assertArgumentRange(newId,1,Long.MAX_VALUE,"id out of range");
+        this.assertArgumentNotNull(newPerson,"person is not null");
+        this.assertArgumentNotNull(newRestaurant,"restaurant is not null");
         this.id = newId;
         this.person = newPerson;
         this.restaurant = newRestaurant;

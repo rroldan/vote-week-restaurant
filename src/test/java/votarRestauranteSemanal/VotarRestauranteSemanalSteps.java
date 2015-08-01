@@ -5,12 +5,13 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-/**
- * Created by richard on 18/7/15.
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class VotarRestauranteSemanalSteps {
 
     VotarRestauranteSemanal votarRestauranteSemanal = new VotarRestauranteSemanal();
+    boolean votoDuplicado = false;
 
     @Given("^Yo soy una persona con nombre \"(.*?)\" que puede votar$")
     public void yo_soy_una_persona_con_nombre_que_puede_votar(String name) throws Throwable {
@@ -39,13 +40,16 @@ public class VotarRestauranteSemanalSteps {
 
     @When("^Yo voto una segunda vez al mismo restaurante$")
     public void yo_voto_una_segunda_vez_al_mismo_restaurante() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        try{
+        votarRestauranteSemanal.vote();
+        } catch(Exception e){
+            votoDuplicado=true;
+        }
+
     }
 
     @Then("^El sistema informa que no se puede votar dos veces$")
     public void el_sistema_informa_que_no_se_puede_votar_dos_veces() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        assertTrue(votoDuplicado);
     }
 }

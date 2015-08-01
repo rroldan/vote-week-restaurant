@@ -20,7 +20,7 @@ public class PersonTest {
     }
 
 
-    @Test
+   @Test
     public void testNewPersonToString() {
         String personToString = "Person[id=1, nickName=nickName]";
         long id = 1;
@@ -48,6 +48,16 @@ public class PersonTest {
         Person person2 = getPersonFixture(1,"nickName");
         assertTrue(person.equals(person2));
 
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testPersonNickameNullException() {
+        Person person = getPersonFixture(1, null);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testPersonIdOutOfRangeException() {
+        Person person = getPersonFixture(0, "nickname");
     }
 
 

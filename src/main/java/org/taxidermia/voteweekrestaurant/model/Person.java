@@ -3,7 +3,7 @@ package org.taxidermia.voteweekrestaurant.model;
 /**
  * Entidad Usuario
  */
-public class Person {
+public class Person extends Entity {
 
     /**
      * Identificador
@@ -21,8 +21,11 @@ public class Person {
      * @param newNickName Nombre Abreviado
      */
     public Person(final long newId, final String newNickName){
+        this.assertArgumentRange(newId,1,Long.MAX_VALUE,"id out of range");
+        this.assertArgumentNotEmpty(newNickName,"nickname is not null or empty");
         this.id = newId;
         this.nickName = newNickName;
+
     }
 
     public long getId(){

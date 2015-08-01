@@ -63,6 +63,17 @@ public class VoteTest {
 
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void testRestauarantPersonNullException() {
+        Vote vote = getVoteFixture(1l,null,RestaurantTest.getRestauranFixture(1, "name"));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testRestaurantIdOutOfRangeException() {
+        Vote vote = getVoteFixture(0, PersonTest.getPersonFixture(1, "nickName"), RestaurantTest.getRestauranFixture(1, "name"));
+    }
+
+
     public static Vote getVoteFixture(long id, Person person, Restaurant restaurant){
         Vote   vote = new Vote.Builder().id(id).person(person).restaurant(restaurant).build();
         return vote;
