@@ -1,9 +1,10 @@
 package org.taxidermia.voteweekrestaurant.application;
 
 import org.apache.log4j.Logger;
-import org.taxidermia.voteweekrestaurant.model.Person;
-import org.taxidermia.voteweekrestaurant.model.PersonRepository;
-import org.taxidermia.voteweekrestaurant.model.VoteRepository;
+import org.taxidermia.voteweekrestaurant.model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementacion logica personas
@@ -23,6 +24,18 @@ public class PersonService {
         this.personRepository.save(person);
 
     }
+
+    public List<Person> persons(){
+        List<Person> personList = new ArrayList();
+        for (Person person : this.personRepository.allPerson()){
+            personList.add(person);
+        }
+
+        logger.debug("persons() " + personList);
+        return personList;
+
+    }
+
 
 
 }
