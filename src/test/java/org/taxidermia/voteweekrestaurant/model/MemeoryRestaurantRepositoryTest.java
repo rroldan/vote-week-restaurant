@@ -16,7 +16,7 @@ public class MemeoryRestaurantRepositoryTest {
     public void testRestaurantRepositorySaveAndFindOneCorrect(){
         DomainRegistry domainRegistry = new DomainRegistry();
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
-        Restaurant restauranFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        Restaurant restauranFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name", "http://localhost" ,"091");
 
         restaurantRepository.save(restauranFixture);
         Restaurant restaurant = restaurantRepository.restaurantOfId(restauranFixture.getId());
@@ -41,7 +41,7 @@ public class MemeoryRestaurantRepositoryTest {
     public void testRestaurantRepositoryRemove(){
         DomainRegistry domainRegistry = new DomainRegistry();
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
-        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name","http://localhost" ,"091");
 
         restaurantRepository.save(restaurantFixture);
         restaurantRepository.remove(restaurantFixture);
@@ -53,7 +53,7 @@ public class MemeoryRestaurantRepositoryTest {
     public  void testRestaurantRepositoryAllRestaurant(){
         DomainRegistry domainRegistry = new DomainRegistry();
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
-        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name", "http://localhost" ,"091");
         restaurantRepository.save(restaurantFixture);
         Collection<Restaurant> restaurantList = restaurantRepository.allRestaurant();
         assertEquals(1, restaurantList.size());
@@ -71,10 +71,10 @@ public class MemeoryRestaurantRepositoryTest {
 
         RestaurantRepository restaurantRepository = domainRegistry.restaurantRepository();
 
-        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        Restaurant restaurantFixture = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name", "http://localhost" ,"091");
         restaurantRepository.save(restaurantFixture);
 
-        Restaurant restaurantFixture2 = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name");
+        Restaurant restaurantFixture2 = RestaurantTest.getRestauranFixture(restaurantRepository.nextIdentity(), "name", "http://localhost" ,"091");
         restaurantRepository.save(restaurantFixture2);
 
         Collection<Restaurant> restaurantList = restaurantRepository.allRestaurant();

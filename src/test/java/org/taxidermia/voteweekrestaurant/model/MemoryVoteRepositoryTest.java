@@ -17,7 +17,7 @@ public class MemoryVoteRepositoryTest {
    public void testVoteRepositorySaveAndFindOneCorrect(){
         domainRegitry = new DomainRegistry();
         person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
-        restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+        restaurant = RestaurantTest.getRestauranFixture(1l, "name", "http://localhost" ,"091");
 
        VoteRepository voteRepository = domainRegitry.voteRepository() ;
        Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
@@ -35,7 +35,7 @@ public class MemoryVoteRepositoryTest {
     public void testVoteRepositoryEqualPerson(){
         domainRegitry = new DomainRegistry();
         person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
-        restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+        restaurant = RestaurantTest.getRestauranFixture(1l, "name","http://localhost" ,"091");
 
         VoteRepository voteRepository = domainRegitry.voteRepository() ;
         Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
@@ -63,7 +63,7 @@ public class MemoryVoteRepositoryTest {
     public void testVoteRepositoryRemove(){
         domainRegitry = new DomainRegistry();
         person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
-        restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+        restaurant = RestaurantTest.getRestauranFixture(1l, "name", "http://localhost" ,"091");
 
         VoteRepository voteRepository = domainRegitry.voteRepository() ;
         Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
@@ -78,7 +78,7 @@ public class MemoryVoteRepositoryTest {
     public void testRepositoryAllVotesOfRestaurant(){
         domainRegitry = new DomainRegistry();
         person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
-        restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+        restaurant = RestaurantTest.getRestauranFixture(1l, "name","http://localhost" ,"091" );
         VoteRepository voteRepository = domainRegitry.voteRepository();
         Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
         voteRepository.save(voteFixture);
@@ -93,7 +93,7 @@ public class MemoryVoteRepositoryTest {
     public void testVoteRepositoryAllVotes() {
         domainRegitry = new DomainRegistry();
         person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
-        restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+        restaurant = RestaurantTest.getRestauranFixture(1l, "name", "http://localhost" ,"091");
         VoteRepository voteRepository = domainRegitry.voteRepository();
         Vote voteFixture = getVoteFixture(voteRepository.nextIdentity(), person, restaurant);
         voteRepository.save(voteFixture);
@@ -108,7 +108,7 @@ public class MemoryVoteRepositoryTest {
         domainRegitry = new DomainRegistry();
         person = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
         Person person2 = PersonTest.getPersonFixture(domainRegitry.personRepository().nextIdentity(), "nickname");
-        restaurant = RestaurantTest.getRestauranFixture(1l, "name");
+        restaurant = RestaurantTest.getRestauranFixture(1l, "name", "http://localhost" ,"091");
 
         VoteRepository voteRepository = domainRegitry.voteRepository();
 

@@ -14,16 +14,38 @@ public class Restaurant extends Entity {
      */
     private final String name;
 
-    public Restaurant (final long newId,final String newName){
+    /**
+     * URL Restaurante
+     */
+    private final String url;
+
+    /**
+     * Telefono
+     */
+    private final String phone;
+
+    public Restaurant (final long newId,final String newName, String newUrl, String newPhone){
         this.assertArgumentRange(newId,1,Long.MAX_VALUE,"id out of range");
         this.assertArgumentNotEmpty(newName,"name is not null or empty");
         this.id = newId;
         this.name = newName;
+        this.url = newUrl;
+        this.phone = newPhone;
     }
 
     public String getName() {
         return this.name;
     }
+
+    public String getUrl(){
+        return this.url;
+    }
+
+    public String getPhone(){
+        return this.phone;
+    }
+
+
 
     public long getId() {return this.id; }
 
@@ -49,7 +71,7 @@ public class Restaurant extends Entity {
 
     @Override
     public String toString() {
-        return "Restaurant[id=" + getId() + ", " + "name=" + getName() + "]";
+        return "Restaurant[id=" + getId() + ", " + "name=" + getName() + ", "+ "url=" + getUrl() +", " + "phone=" + getPhone() + "]";
     }
 
     /**
@@ -59,6 +81,8 @@ public class Restaurant extends Entity {
     {
         private long nestedId;
         private String nestedName;
+        private String nestedUrl;
+        private String nestedPhone;
 
 
         public Builder id(final long newId){
@@ -71,8 +95,19 @@ public class Restaurant extends Entity {
             return this;
         }
 
+        public Builder url(final String newUrl){
+            this.nestedUrl = newUrl;
+            return this;
+        }
+
+        public Builder phone(final String newPhone){
+            this.nestedPhone = newPhone;
+            return this;
+        }
+
+
         public Restaurant build() {
-            return new Restaurant(nestedId,nestedName);
+            return new Restaurant(nestedId,nestedName,nestedUrl,nestedPhone);
         }
     }
     

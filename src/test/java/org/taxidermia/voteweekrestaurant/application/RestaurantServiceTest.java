@@ -17,7 +17,7 @@ public class RestaurantServiceTest {
     public void addRestaurantToListOkTest(){
 
         long restaurantId = restaurantRepository.nextIdentity();
-        Restaurant restaurantFixture =  RestaurantTest.getRestauranFixture(restaurantId, "name");
+        Restaurant restaurantFixture =  RestaurantTest.getRestauranFixture(restaurantId, "name", "http://localhost" ,"091");
 
         restaurantService.addRestaurantToList(restaurantFixture);
         Restaurant restaurant = restaurantRepository.restaurantOfId(restaurantId);
