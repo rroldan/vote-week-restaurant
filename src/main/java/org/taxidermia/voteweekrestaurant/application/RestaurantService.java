@@ -6,6 +6,9 @@ import org.taxidermia.voteweekrestaurant.model.PersonRepository;
 import org.taxidermia.voteweekrestaurant.model.Restaurant;
 import org.taxidermia.voteweekrestaurant.model.RestaurantRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * implementacion Servicio Restaurantes
  */
@@ -23,5 +26,17 @@ public class RestaurantService {
         logger.debug("addRestaurantToList()" + restaurant.toString());
         this.restaurantRepository.save(restaurant);
     }
+
+    public List<Restaurant> restaurantList(){
+        List<Restaurant> restaurantList = new ArrayList();
+        for (Restaurant restaurant : this.restaurantRepository.allRestaurant()){
+            restaurantList.add(restaurant);
+        }
+
+        logger.debug("persons() " + restaurantList);
+        return restaurantList;
+
+    }
+
 
 }

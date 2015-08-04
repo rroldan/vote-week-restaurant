@@ -38,7 +38,7 @@ public class PersonServiceTest {
 
         personService.addPersonToList(personFixture);
 
-        List<Person> personList = personService.persons();
+        List<Person> personList = personService.personList();
         Person person = personList.iterator().next();
 
         assertEquals(personId, person.getId());

@@ -25,7 +25,7 @@ public class PersonService {
 
     }
 
-    public List<Person> persons(){
+    public List<Person> personList(){
         List<Person> personList = new ArrayList();
         for (Person person : this.personRepository.allPerson()){
             personList.add(person);
