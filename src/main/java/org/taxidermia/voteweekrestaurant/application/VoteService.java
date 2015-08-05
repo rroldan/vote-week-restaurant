@@ -1,10 +1,12 @@
 package org.taxidermia.voteweekrestaurant.application;
 
 import org.apache.log4j.Logger;
+import org.taxidermia.voteweekrestaurant.model.Person;
 import org.taxidermia.voteweekrestaurant.model.Restaurant;
 import org.taxidermia.voteweekrestaurant.model.Vote;
 import org.taxidermia.voteweekrestaurant.model.VoteRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,6 +40,17 @@ public class VoteService {
     public List<Vote> votes(Restaurant restaurant){
         logger.debug("votes()" + restaurant.toString());
         return (List<Vote>) voteRepository.allVotesOfRestaurant(restaurant);
+
+    }
+
+    public List<Vote> voteList(){
+        List<Vote> voteList = new ArrayList();
+        for (Vote vote : this.voteRepository.allVotes()){
+            voteList.add(vote);
+        }
+
+        logger.debug("votes() " + voteList);
+        return voteList;
 
     }
 

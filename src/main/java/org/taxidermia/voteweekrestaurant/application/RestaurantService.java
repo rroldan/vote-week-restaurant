@@ -38,5 +38,13 @@ public class RestaurantService {
 
     }
 
+    public Restaurant getRestaurant(Long restaurantId){
+        logger.debug("getRestaurnt() " + "id=" + restaurantId);
+        Restaurant restauarnt = this.restaurantRepository.restaurantOfId(restaurantId);
+        logger.debug("return getRestaurant() " + restauarnt);
+        return restauarnt;
+
+    }
+
 
 }

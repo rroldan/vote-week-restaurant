@@ -4,15 +4,18 @@ package org.taxidermia.voteweekrestaurant.application;
 import org.junit.Test;
 import org.taxidermia.voteweekrestaurant.model.*;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class VoteServiceTest {
-    DomainRegistry domainRegitry = new DomainRegistry();
-    VoteRepository voteRepository = domainRegitry.voteRepository();
-    VoteService voteService = new  VoteService(voteRepository);
+
 
     @Test
     public void testVoteOkTest(){
+        DomainRegistry domainRegitry = new DomainRegistry();
+        VoteRepository voteRepository = domainRegitry.voteRepository();
+        VoteService voteService = new  VoteService(voteRepository);
 
         long voteId = voteRepository.nextIdentity();
         Vote voteFixture =getVoteFixture(voteId);
@@ -27,6 +30,10 @@ public class VoteServiceTest {
 
     @Test(expected=java.lang.IllegalStateException.class)
     public void testVoteEqualPersonExceptionTest(){
+        DomainRegistry domainRegitry = new DomainRegistry();
+        VoteRepository voteRepository = domainRegitry.voteRepository();
+        VoteService voteService = new  VoteService(voteRepository);
+
 
         long voteId = voteRepository.nextIdentity();
         Vote voteFixture =getVoteFixture(voteId);
@@ -39,11 +46,28 @@ public class VoteServiceTest {
     }
 
     @Test
-    public void testVotesRestaurant() {
+    public void testListVotesOk(){
 
+        DomainRegistry domainRegitry = new DomainRegistry();
+        VoteRepository voteRepository = domainRegitry.voteRepository();
+        VoteService voteService = new  VoteService(voteRepository);
+
+
+        long voteId = voteRepository.nextIdentity();
+        Vote voteFixture =  getVoteFixture(voteId);
+
+        voteService.vote(voteFixture);
+
+        List<Vote> voteList = voteService.voteList();
+        Vote vote = voteList.iterator().next();
+
+        assertEquals(voteId, vote.getId());
 
 
     }
+
+
+
 
 
 

@@ -6,6 +6,7 @@ import org.taxidermia.voteweekrestaurant.model.*;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class PersonServiceTest {
@@ -45,6 +46,35 @@ public class PersonServiceTest {
 
 
     }
+
+    @Test
+    public void testGetPersonOk(){
+        PersonRepository personRepository = initPersonRepository();
+        PersonService personService = new  PersonService(personRepository);
+
+        long personId = personRepository.nextIdentity();
+        Person personFixture =  PersonTest.getPersonFixture(personId, "nickName");
+
+        personService.addPersonToList(personFixture);
+        Person person = personService.getPerson(personId);
+        assertEquals(personId, person.getId());
+
+    }
+
+    @Test
+    public void testGetPersonNull(){
+        PersonRepository personRepository = initPersonRepository();
+        PersonService personService = new  PersonService(personRepository);
+
+        long personId = personRepository.nextIdentity();
+        Person personFixture =  PersonTest.getPersonFixture(personId, "nickName");
+
+        personService.addPersonToList(personFixture);
+        Person person = personService.getPerson(0l);
+        assertNull(person);
+
+    }
+
 
 
 

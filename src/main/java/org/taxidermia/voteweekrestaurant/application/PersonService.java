@@ -20,7 +20,7 @@ public class PersonService {
 
 
     public void addPersonToList(Person person){
-        logger.debug("addPersonToList()" + person.toString() );
+        logger.debug("addPersonToList()" + person.toString());
         this.personRepository.save(person);
 
     }
@@ -33,6 +33,14 @@ public class PersonService {
 
         logger.debug("persons() " + personList);
         return personList;
+
+    }
+
+    public Person getPerson(Long personId){
+        logger.debug("getPerson() " + "id=" + personId);
+        Person person = this.personRepository.personOfId(personId);
+        logger.debug("return getPerson() " + person);
+        return person;
 
     }
 
